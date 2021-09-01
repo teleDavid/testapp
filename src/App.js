@@ -6,11 +6,11 @@ import './App.css';
 //import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
 
 
-/*var AWS = require('aws-sdk/dist/aws-sdk-react-native');
+var AWS = require('aws-sdk/dist/aws-sdk-react-native');
 AWS.config.region = 'eu-west-1'; // Region
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
     IdentityPoolId: 'eu-west-1:2c838664-16cc-4a7a-80e3-2762d49801f5',
-});*/
+});
 
 
 function App() {
