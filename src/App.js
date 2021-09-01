@@ -12,6 +12,39 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
     IdentityPoolId: 'eu-west-1:2c838664-16cc-4a7a-80e3-2762d49801f5',
 });
 
+var params = {
+  Destination: { /* required */
+    CcAddresses: [
+      /* more items */
+    ],
+    ToAddresses: [
+      'david@telecomstack.com',
+      /* more items */
+    ]
+  },
+  Message: { /* required */
+    Body: { /* required */
+      Html: {
+       Charset: "UTF-8",
+       Data: "Test Email"
+      },
+      Text: {
+       Charset: "UTF-8",
+       Data: "This is an email from amplify"
+      }
+     },
+     Subject: {
+      Charset: 'UTF-8',
+      Data: 'Test email'
+     }
+    },
+  Source: 'daneill@telecomstack.com', /* required */
+  ReplyToAddresses: [
+     'david@telecomstack.com',
+    /* more items */
+  ],
+};
+
 
 function App() {
 
@@ -22,6 +55,18 @@ function App() {
       console.log("Access key:", AWS.config.credentials.accessKeyId);
     }
   });
+
+  function handleSubmit(e) {
+    e.preventDefault();
+  var sendPromise = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
+  sendPromise.then(
+    function(data) {
+      console.log(data.MessageId);
+    }).catch(
+      function(err) {
+      console.error(err, err.stack);
+  });
+  }
 
   return (
     <div className="App">
@@ -39,6 +84,11 @@ function App() {
           Learn React
         </a>
       </header>
+
+      <form classname="App-form" onSubmit={handleSubmit}>
+          <button classname="App-button"
+            type="submit">Submit</button>
+      </form>
     </div>
   );
 }
