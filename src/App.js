@@ -2,8 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 
 
-import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
-import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
+//import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
+//import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
 
 
 var AWS = require('aws-sdk/dist/aws-sdk-react-native');
